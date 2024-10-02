@@ -17,6 +17,7 @@ public class CommonProxy {
 	}
 
 	public void onPostInit() {
+
 	}
 
 	public void onInit(){

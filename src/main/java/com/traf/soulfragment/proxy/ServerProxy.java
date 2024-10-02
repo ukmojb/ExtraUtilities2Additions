@@ -22,8 +22,8 @@ public class ServerProxy extends CommonProxy {
 
     public void onInit(){
         super.onInit();
-        MinecraftForge.EVENT_BUS.register(new CraftingEvent());
-        MinecraftForge.EVENT_BUS.register(new DropsEvent());
-        MinecraftForge.EVENT_BUS.register(new CloneEvent());
+//        MinecraftForge.EVENT_BUS.register(new CraftingEvent());
+//        MinecraftForge.EVENT_BUS.register(new DropsEvent());
+//        MinecraftForge.EVENT_BUS.register(new CloneEvent());
     }
 }
