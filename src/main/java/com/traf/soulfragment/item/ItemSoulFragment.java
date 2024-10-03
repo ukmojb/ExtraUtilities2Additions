@@ -40,16 +40,16 @@ public class ItemSoulFragment extends Item implements IHasModel {
 //            return new ActionResult<>(EnumActionResult.PASS, itemstack);
 //        }
 
+        IAttributeInstance maxHealthAttribute = playerIn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
+        if (maxHealthAttribute.getModifier(MAX_HEALTH_MODIFIER_ID) != null) {
+            double value = maxHealthAttribute.getModifier(MAX_HEALTH_MODIFIER_ID).getAmount();
+            maxHealthAttribute.removeModifier(MAX_HEALTH_MODIFIER_ID);
+            maxHealthAttribute.applyModifier(new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2 + value, 0));
+        } else {
+            maxHealthAttribute.removeModifier(MAX_HEALTH_MODIFIER_ID);
+            maxHealthAttribute.applyModifier(new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2, 0));
+        }
         if (!worldIn.isRemote) {
-            IAttributeInstance maxHealthAttribute = playerIn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
-            if (maxHealthAttribute.getModifier(MAX_HEALTH_MODIFIER_ID) != null) {
-                double value = maxHealthAttribute.getModifier(MAX_HEALTH_MODIFIER_ID).getAmount();
-                maxHealthAttribute.removeModifier(MAX_HEALTH_MODIFIER_ID);
-                maxHealthAttribute.applyModifier(new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2 + value, 0));
-            } else {
-                maxHealthAttribute.removeModifier(MAX_HEALTH_MODIFIER_ID);
-                maxHealthAttribute.applyModifier(new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2, 0));
-            }
             itemstack.shrink(1);
         }
         return new ActionResult<>(EnumActionResult.PASS, itemstack);

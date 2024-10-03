@@ -1,22 +1,17 @@
 package com.traf.soulfragment;
 
 
-import com.google.common.eventbus.Subscribe;
-import com.tfar.unstabletools.tools.ItemUnstableSword;
 import com.traf.soulfragment.item.ModItems;
+import com.traf.soulfragment.network.PacketHandler;
 import com.traf.soulfragment.proxy.CommonProxy;
 import com.traf.soulfragment.proxy.ServerProxy;
 import com.traf.soulfragment.recipe.CraftingLoader;
 import com.traf.soulfragment.recipe.RecipeSoulFragment;
 import com.traf.soulfragment.util.IHasModel;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.RecipeBookCloning;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,21 +19,19 @@ import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import static com.tfar.unstabletools.UnstableTools.UNSTABLE;
 import static net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS;
 
 @Mod.EventBusSubscriber
-@Mod(modid = SoulFragmentMod.MODID, name = SoulFragmentMod.NAME, version = SoulFragmentMod.VERSION)
+@Mod(modid = SoulFragmentMod.MODID, name = SoulFragmentMod.NAME, version = SoulFragmentMod.VERSION, dependencies="required-after:extrautils2;required-after:unstabletools")
 public class SoulFragmentMod {
     public static final String MODID = "soulfragment";
     public static final String NAME = "Soul Fragment";
-    public static final String VERSION = "1.2";
+    public static final String VERSION = "1.4";
 
     public static final String CLIENT_PROXY_CLASS = "com.traf.soulfragment.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "com.traf.soulfragment.proxy.CommonProxy";
@@ -51,7 +44,7 @@ public class SoulFragmentMod {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.onPreInit();
-
+        PacketHandler.init();
     }
 
     @Mod.EventHandler
