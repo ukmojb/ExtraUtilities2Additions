@@ -7,29 +7,14 @@ package com.traf.soulfragment.recipe;
  * @create 2023/7/16 21:50
  */
 
-import com.tfar.unstabletools.UnstableTools;
-import com.tfar.unstabletools.tools.ItemUnstableSword;
 import com.traf.soulfragment.SoulFragmentMod;
-import com.traf.soulfragment.item.ModItems;
 import gnu.trove.set.TIntSet;
 import gnu.trove.set.hash.TIntHashSet;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.registries.GameData;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
-
-import javax.annotation.Nonnull;
-
-import static com.tfar.unstabletools.UnstableTools.UNSTABLE;
 
 
 public class CraftingLoader

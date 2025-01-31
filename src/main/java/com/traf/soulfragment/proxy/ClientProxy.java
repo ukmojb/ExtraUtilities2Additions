@@ -2,7 +2,6 @@ package com.traf.soulfragment.proxy;
 
 import com.rwtema.extrautils2.backend.ISidedFunction;
 import com.traf.soulfragment.event.ClientEvent;
-import com.traf.soulfragment.event.CraftingEvent;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderPlayer;

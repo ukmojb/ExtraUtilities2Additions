@@ -2,7 +2,6 @@ package com.traf.soulfragment.network;
 
 
 import com.traf.soulfragment.event.ClientEvent;
-import com.traf.soulfragment.recipe.RecipeSoulFragment;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

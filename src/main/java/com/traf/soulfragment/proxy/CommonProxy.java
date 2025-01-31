@@ -4,6 +4,7 @@ import com.rwtema.extrautils2.backend.ISidedFunction;
 import com.traf.soulfragment.event.CloneEvent;
 import com.traf.soulfragment.event.CraftingEvent;
 import com.traf.soulfragment.event.DropsEvent;
+import com.traf.soulfragment.event.EndDataSynchronismEvent;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -26,6 +27,8 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new CraftingEvent());
 		MinecraftForge.EVENT_BUS.register(new DropsEvent());
 		MinecraftForge.EVENT_BUS.register(new CloneEvent());
+		MinecraftForge.EVENT_BUS.register(new EndDataSynchronismEvent());
+
 	}
 
 	public <F, T> T apply(ISidedFunction<F, T> func, F input) {

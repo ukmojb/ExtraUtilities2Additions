@@ -1,9 +1,6 @@
 package com.traf.soulfragment.recipe;
 
-import com.rwtema.extrautils2.ExtraUtils2;
 import com.rwtema.extrautils2.backend.ISidedFunction;
-import com.rwtema.extrautils2.compatibility.CompatHelper112;
-import com.rwtema.extrautils2.compatibility.StackHelper;
 import com.rwtema.extrautils2.gui.backend.WidgetCraftingMatrix;
 import com.traf.soulfragment.SoulFragmentMod;
 import com.traf.soulfragment.event.ClientEvent;
@@ -18,7 +15,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.network.play.server.SPacketSetExperience;
 import net.minecraft.network.play.server.SPacketUpdateHealth;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;

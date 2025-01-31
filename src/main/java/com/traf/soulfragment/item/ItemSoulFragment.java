@@ -2,6 +2,7 @@ package com.traf.soulfragment.item;
 
 import com.traf.soulfragment.SoulFragmentMod;
 import com.traf.soulfragment.util.IHasModel;
+import com.traf.soulfragment.util.Tools;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -12,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import java.util.UUID;
@@ -41,14 +41,20 @@ public class ItemSoulFragment extends Item implements IHasModel {
 //        }
 
         IAttributeInstance maxHealthAttribute = playerIn.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
+        AttributeModifier addmodifier;
         if (maxHealthAttribute.getModifier(MAX_HEALTH_MODIFIER_ID) != null) {
             double value = maxHealthAttribute.getModifier(MAX_HEALTH_MODIFIER_ID).getAmount();
             maxHealthAttribute.removeModifier(MAX_HEALTH_MODIFIER_ID);
-            maxHealthAttribute.applyModifier(new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2 + value, 0));
+            addmodifier = new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2 + value, 0);
+            maxHealthAttribute.applyModifier(addmodifier);
         } else {
             maxHealthAttribute.removeModifier(MAX_HEALTH_MODIFIER_ID);
-            maxHealthAttribute.applyModifier(new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2, 0));
+            addmodifier = new AttributeModifier(MAX_HEALTH_MODIFIER_ID, "Health boost", 2, 0);
+            maxHealthAttribute.applyModifier(addmodifier);
         }
+
+        Tools.saveHealthNBT(playerIn, addmodifier.getAmount(), MAX_HEALTH_MODIFIER_ID);
+
         if (!worldIn.isRemote) {
             itemstack.shrink(1);
         }
