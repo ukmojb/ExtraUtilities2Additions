@@ -1,0 +1,22 @@
+{
+  "pattern": [
+    "Da ",
+    "DcD",
+    " D "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "eu2a:bedrockiumingot"
+    },
+    "a": {
+      "item": "eu2a:soul_fragment"
+    },
+    "c": {
+      "item": "minecraft:bowl"
+    }
+  },
+  "result": {
+    "item": "eu2a:watering_can"
+  }
+}

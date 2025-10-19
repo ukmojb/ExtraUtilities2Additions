@@ -1,0 +1,14 @@
+{
+  "minVersion": "0.7",
+  "package": "com.wdcftgg.eu2a.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "refmap": "mixins.eu2a.refmap.json",
+  "mixins": [
+    "MixinUnstableIngotRecipe"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+
+}

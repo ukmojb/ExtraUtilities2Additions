@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "eu2a:conveyor_belt_block" },
+    "facing=south": { "model": "eu2a:conveyor_belt_block", "y": 180 },
+    "facing=west": { "model": "eu2a:conveyor_belt_block", "y": 270 },
+    "facing=east": { "model": "eu2a:conveyor_belt_block", "y": 90 }
+  }
+}

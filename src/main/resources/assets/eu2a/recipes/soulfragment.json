@@ -1,0 +1,14 @@
+{
+  "pattern": [
+    "D"
+  ],
+  "type": "eu2a:soulfragment",
+  "key": {
+    "D": {
+      "item": "eu2a:unstable_sword"
+    }
+  },
+  "result": {
+    "item": "eu2a:soul_fragment"
+  }
+}

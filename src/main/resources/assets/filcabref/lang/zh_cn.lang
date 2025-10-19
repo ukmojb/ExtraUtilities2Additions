@@ -1,0 +1,14 @@
+itemGroup.filcabref=文件柜
+
+tile.filcabref:filing_cabinet0.name=文件柜
+tile.filcabref:filing_cabinet1.name=高级文件柜
+
+filcabref.container.filing_cabinet.basic=文件柜
+filcabref.container.filing_cabinet.advanced=高级文件柜
+
+filcabref.misc.tooltip.filing_cabinet.basic=可存储某一类物品的不同变体。
+filcabref.misc.tooltip.filing_cabinet.advanced=可存储不可堆叠物品。
+filcabref.misc.tooltip.capacity_upgrade=提升文件柜容量。
+filcabref.misc.tooltip.cabinet_info.slot_use=已用槽位：%d/%d（%s）
+filcabref.misc.tooltip.cabinet_info.item_use=物品总数：%d/%d（%s）
+filcabref.misc.tooltip.item_count=（已存储 %d 个）

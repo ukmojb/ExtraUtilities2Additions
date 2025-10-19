@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "eu2a:blocks/chandelier_block"
+  }
+}

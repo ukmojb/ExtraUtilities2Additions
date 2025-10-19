@@ -1,0 +1,76 @@
+eu2a.soul_fragment.message=你的灵魂过于脆弱，无法分离灵魂碎片
+item.eu2a.soul_fragment.name=灵魂碎片
+item.eu2a.pseudo_inversion_sigil.name=伪逆徽章
+item.eu2a.mobius_ingot.name=莫比乌斯“稳定/不稳定”锭
+item.eu2a.bedrockiumIngot.name=基岩锭
+item.eu2a.unstable_nugget.name=不稳定金属粒
+item.eu2a.watering_can.name=洒水壶(强化)
+
+item.eu2a:unstable_ingot.name=不稳定金属锭
+tile.eu2a:unstable_block.name=不稳定金属方块
+tile.eu2a:bedrockium_block.name=基岩块
+tile.eu2a:ender_infused_obsidian_block.name=末影黑曜石
+tile.eu2a:burnt_quartz_block.name=焦黑石英
+tile.eu2a:diamond_etched_computational_matrix_block.name=钻石蚀刻计算矩阵
+tile.eu2a:chandelier_block.name=奢华吊顶灯
+tile.eu2a:magnumtorch_block.name=卓越火炬
+tile.eu2a:conveyor_belt_block.name=传送带
+
+item.eu2a:unstable_pickaxe.name=毁灭之镐
+item.eu2a:unstable_axe.name=治愈之斧
+item.eu2a:unstable_sword.name=天域之剑
+item.eu2a:unstable_spade.name=侵蚀之铲
+item.eu2a:unstable_hoe.name=回溯之锄
+item.eu2a:unstable_shears.name=裁决之剪
+
+item.eu2a:division_sign.name=分割徽章
+
+itemGroup.eu2a=更多实用设备2拓展
+
+unstabletools.early=时机尚早
+unstabletools.ontime=时机正好
+unstabletools.late=为时已晚
+unstabletools.incomplete=缺少一条或多条红石线
+unstabletools.nosky=无法看见天空
+unstabletools.ready=开始献祭吧
+unstabletools.time_left=剩余时间:
+unstabletools.stable="稳定的"
+unstabletools.activated=是否激活:
+unstabletools.uses_left=剩余使用次数:
+
+death.attack.divide_by_diamond=%1$s 试图除以钻石
+death.attack.escape_divide_by_diamond=%1$s 试图逃避钻石的除法
+
+eu2a.pseudo_inversion_sigil.string.true=线放置成功
+eu2a.pseudo_inversion_sigil.string.false=线放置失败
+eu2a.pseudo_inversion_sigil.red_stone.true=红石线放置成功
+eu2a.pseudo_inversion_sigil.red_stone.false=红石线放置失败
+eu2a.pseudo_inversion_sigil.chest.north.true=北方箱子正确
+eu2a.pseudo_inversion_sigil.chest.north.false=北方箱子错误
+eu2a.pseudo_inversion_sigil.chest.east.true=东方箱子正确
+eu2a.pseudo_inversion_sigil.chest.east.false=东方箱子错误
+eu2a.pseudo_inversion_sigil.chest.west.true=西方箱子正确
+eu2a.pseudo_inversion_sigil.chest.west.false=西方箱子错误
+eu2a.pseudo_inversion_sigil.chest.south.true=南方箱子正确
+eu2a.pseudo_inversion_sigil.chest.south.false=南方箱子错误
+eu2a.pseudo_inversion_sigil.all.true=万事具备，开始仪式吧
+eu2a.pseudo_inversion_sigil.all.false=仪式残缺，请重新检查
+eu2a.pseudo_inversion_sigil.kill_mob=已击杀生物: %s
+
+tile.qed.0.name=QED(量子末影设备Quantum Ender Device)
+tile.qed.1.name=QED(量子富集设备Quantum Enrichment Device)
+tile.qed.2.name=QED(量子能源设备Quantum Energy Device)
+tile.qed.3.name=QED(量子纠缠测算仪Quantum Entanglement Diviner)
+tile.qed.4.name=QED(量子纠缠仪Quantum Entanglement Doohicky)
+tile.qed.5.name=QED(量子实体设备Quantum Entity Device)
+tile.qed.6.name=QED(量子末影测算仪Quantum Ender Diviner)
+tile.qed.7.name=QED(夸克/电子导向仪Quark/Electron Director)
+tile.qed.8.name=QED(超优雅设备Quite Elegant Device)
+tile.qed.9.name=QED(证毕方块Quod Erat Demonstrandum)
+tile.qed.10.name=QED(夸克末影设备Quacky Ender Device)
+tile.qed.11.name=QED(二次方程式设备Quadratic Equation Device)
+tile.qed.12.name=QED(鹌鹑吞鸭子方块 Quail Eating Ducks)
+tile.qed.13.name=QED(类星纠缠设备Quasar Entanglement Device)
+tile.qed.14.name=QED(相当贵饰品Quite Expensive Decoration)
+tile.qed.15.name=QED(量子放射解码器Quantum Emission Decompiler)
+

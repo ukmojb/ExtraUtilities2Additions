@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bvb",
+    "ini",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "item": "eu2a:ender_infused_obsidian_block"
+    },
+    "n": {
+      "item": "eu2a:diamond_etched_computational_matrix_block"
+    },
+    "b": {
+      "item": "minecraft:ender_eye"
+    },
+    "v": {
+      "type": "forge:ore_dict",
+      "ore": "workbench"
+    }
+  },
+  "result": {
+    "item": "eu2a:qed_block"
+  }
+}

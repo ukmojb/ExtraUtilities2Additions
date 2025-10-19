@@ -12,7 +12,7 @@ plugins {
 
 version = project.mod_version
 group = project.maven_group
-archivesBaseName = project.archives_base_name
+archivesBaseName = project.mod_name
 
 // Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
@@ -41,13 +41,13 @@ minecraft {
     // MCP Mappings
     mcpMappingChannel = 'stable'
     mcpMappingVersion = '39'
-    
+
     // Set username here, the UUID will be looked up automatically
     username = 'wdcftgg'
-    
+
     // Add any additional tweaker classes here
     // extraTweakClasses.add('org.spongepowered.asm.launch.MixinTweaker')
-    
+
     // Add various JVM arguments here for runtime
     def args = ["-ea:${project.group}"]
     if (project.use_coremod.toBoolean()) {
@@ -62,7 +62,7 @@ minecraft {
 
     // Include and use dependencies' Access Transformer files
     useDependencyAccessTransformers = true
-    
+
     // Add any properties you want to swap out for a dynamic value at build time here
     // Any properties here will be added to a class at build time, the name can be configured below
     // Example:
@@ -92,6 +92,10 @@ repositories {
             includeGroup 'curse.maven'
         }
     }
+    maven {
+        name = 'blamejared'
+        url = 'https://maven.blamejared.com'
+    }
     mavenLocal() // Must be last for caching to work
 }
 
@@ -104,8 +108,16 @@ dependencies {
     }
 
     // Example of deobfuscating a dependency
-    implementation rfg.deobf('curse.maven:UnstableTools-322355:4293939')
+     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+
+//    implementation rfg.deobf('curse.maven:UnstableTools-322355:4293939')
     implementation rfg.deobf('curse.maven:ExtraUtilities-225561:2678374')
+    implementation rfg.deobf('curse.maven:LibNine-322344:3509087')
+
+
+    compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"
+
+    runtimeOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"
 
     if (project.use_mixins.toBoolean()) {
         // Change your mixin refmap name here:
@@ -137,7 +149,7 @@ processResources {
     // This will ensure that this task is redone when the versions change
     inputs.property 'version', project.version
     inputs.property 'mcversion', project.minecraft.version
-    
+
     // Replace various properties in mcmod.info and pack.mcmeta if applicable
     filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
         // Replace version and mcversion
@@ -146,7 +158,7 @@ processResources {
                 'mcversion': project.minecraft.version
         )
     }
-    
+
     if (project.use_access_transformer.toBoolean()) {
         rename '(.+_at.cfg)', 'META-INF/$1' // Make sure Access Transformer files are in META-INF folder
     }

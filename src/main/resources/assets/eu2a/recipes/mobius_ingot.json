@@ -1,0 +1,24 @@
+{
+  "pattern": [
+    "I",
+    "D",
+    "d"
+  ],
+  "type": "eu2a:pseudo_inversion_sigil",
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "D": {
+      "item": "eu2a:pseudo_inversion_sigil"
+    },
+    "d": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    }
+  },
+  "result": {
+    "item": "eu2a:mobius_ingot"
+  }
+}

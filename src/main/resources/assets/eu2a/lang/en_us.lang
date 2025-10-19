@@ -1,0 +1,38 @@
+eu2a.soul_fragment.message=Your soul is too fragile to separate the pieces
+item.eu2a.soul_fragment.name=Soul Fragment
+item.eu2a.pseudo_inversion_sigil.name=Pseudo-Inversion Sigil
+
+item.eu2a:unstable_ingot.name=Unstable Ingot
+tile.eu2a:unstable_block.name=Unstable Block
+
+
+item.eu2a:unstable_pickaxe.name=Unstable Pickaxe
+item.eu2a:unstable_axe.name=Unstable Axe
+item.eu2a:unstable_sword.name=Unstable Sword
+item.eu2a:unstable_spade.name=Unstable Shovel
+item.eu2a:unstable_hoe.name=Unstable Hoe
+item.eu2a:unstable_shears.name=Unstable Shears
+
+item.eu2a:division_sign.name=Division Sign
+
+item.eu2a:unstable_helmet.name=Unstable Helmet
+item.eu2a:unstable_chestplate.name=Unstable Chestplate
+item.eu2a:unstable_leggings.name=Unstable Leggings
+item.eu2a:unstable_boots.name=Unstable Boots
+
+itemGroup.eu2a=Extra Utilities 2 Additions
+
+unstabletools.early=Too early
+unstabletools.ontime=The time is right
+unstabletools.late=Too late
+unstabletools.incomplete=Missing one or more redstone wires
+unstabletools.nosky=Can't see sky
+unstabletools.ready=Perform the sacrifice
+unstabletools.time_left=Time left:
+unstabletools.stable='Stable'
+unstabletools.activated=Activated:
+unstabletools.uses_left=Uses Left:
+
+
+death.attack.divide_by_diamond=%1$s tried to divide by diamond
+death.attack.escape_divide_by_diamond=%1$s tried to escape divison by diamond

@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "FCF",
+    "FCF",
+    "FCF"
+  ],
+  "key": {
+    "F": {
+      "item": "extrautils2:decorativesolidwood",
+      "data": 1
+    },
+    "C": {
+      "item": "filcabref:filing_cabinet",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "filcabref:filing_cabinet",
+    "count": 1,
+    "data": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "eu2a:blocks/enderConstructor_top",
+    "down": "eu2a:blocks/enderConstructor_pillar_bottom",
+    "up": "eu2a:blocks/enderConstructor_top",
+    "north": "eu2a:blocks/enderConstructor_side",
+    "south": "eu2a:blocks/enderConstructor_side",
+    "west": "eu2a:blocks/enderConstructor_side",
+    "east": "eu2a:blocks/enderConstructor_side"
+  }
+}

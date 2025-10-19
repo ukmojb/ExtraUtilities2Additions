@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ncn",
+    "csc",
+    "ncn"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:diamond_block"
+    },
+    "n": {
+      "item": "extrautils2:compressedcobblestone",
+      "data": 2
+    },
+    "c": {
+      "item": "extrautils2:compressedcobblestone",
+      "data": 3
+    }
+  },
+  "result": {
+    "item": "eu2a:bedrockiumingot"
+  }
+}

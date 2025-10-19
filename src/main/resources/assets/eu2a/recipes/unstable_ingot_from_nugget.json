@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "eu2a:unstable_nugget"
+    }
+  },
+  "result": {
+    "item": "eu2a:unstable_ingot"
+  }
+}

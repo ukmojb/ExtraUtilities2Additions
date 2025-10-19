@@ -1,0 +1,24 @@
+{
+  "pattern": [
+    "cdc",
+    "DDD",
+    " D "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "minecraft:torch"
+    },
+    "d": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "c": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    }
+  },
+  "result": {
+    "item": "eu2a:chandelier_block"
+  }
+}

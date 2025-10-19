@@ -1,0 +1,7 @@
+{
+  "recipes": {
+    "pseudo_inversion_sigil": "com.wdcftgg.eu2a.mods.unstabletools.crafting.RecipePseudoInversionSigilFactory",
+    "division": "com.wdcftgg.eu2a.mods.unstabletools.crafting.RecipeDivisionFactory",
+    "soulfragment": "com.wdcftgg.eu2a.recipe.RecipeSoulFragmentFactory"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "FCF",
+    "FCF",
+    "FCF"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "chestWood"
+    }
+  },
+  "result": {
+    "item": "filcabref:filing_cabinet",
+    "count": 1,
+    "data": 0
+  }
+}

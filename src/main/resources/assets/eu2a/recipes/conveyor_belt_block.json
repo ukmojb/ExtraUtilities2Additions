@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "bnb",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:rail"
+    },
+    "b": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "n": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "eu2a:conveyor_belt_block"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "pattern": [
+    "cdc",
+    "dDd",
+    "cdc"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "eu2a:ender_infused_obsidian_block"
+    },
+    "d": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "c": {
+      "item": "eu2a:burnt_quartz_block"
+    }
+  },
+  "result": {
+    "item": "eu2a:diamond_etched_computational_matrix_block"
+  }
+}

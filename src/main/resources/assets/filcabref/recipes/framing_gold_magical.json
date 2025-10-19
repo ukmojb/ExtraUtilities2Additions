@@ -1,0 +1,26 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "IN",
+    "NW"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetGold"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "blockMagicalWood"
+    }
+  },
+  "result": {
+    "item": "filcabref:material",
+    "count": 1,
+    "data": 1
+  }
+}

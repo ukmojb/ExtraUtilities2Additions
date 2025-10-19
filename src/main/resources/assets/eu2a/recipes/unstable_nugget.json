@@ -1,0 +1,24 @@
+{
+  "pattern": [
+    "I",
+    "D",
+    "d"
+  ],
+  "type": "eu2a:division",
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "D": {
+      "item": "eu2a:division_sign"
+    },
+    "d": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    }
+  },
+  "result": {
+    "item": "eu2a:unstable_nugget"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "eu2a:bedrockiumingot"
+    }
+  },
+  "result": {
+    "item": "eu2a:bedrockium_block"
+  }
+}
