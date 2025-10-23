@@ -1,8 +1,12 @@
 package com.wdcftgg.eu2a.item;
 
 import com.wdcftgg.eu2a.ExtraUtilities2Additions;
+import com.wdcftgg.eu2a.mods.unstabletools.UnstableTools;
 import com.wdcftgg.eu2a.util.IHasModel;
 import com.wdcftgg.eu2a.util.Tools;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -13,7 +17,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.UUID;
 
 import static com.wdcftgg.eu2a.item.ModItems.ITEMS;
@@ -28,6 +36,27 @@ public class ItemSoulFragment extends Item implements IHasModel {
         this.setCreativeTab(ExtraUtilities2Additions.creativeTab);
 
         ITEMS.add(this);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        if (!stack.hasTagCompound()) return;
+        boolean stable = false;
+        if (stack.getTagCompound() != null) {
+            stable = stack.getTagCompound().getBoolean("fragile");
+        }
+
+        if (stable) {
+            tooltip.add(I18n.format(UnstableTools.MODID + ".soul_fragment.fragile"));
+        }
+
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack stack) {
+        return (stack.hasTagCompound() && (stack.getTagCompound().getBoolean("fragile")));
     }
 
     @Override

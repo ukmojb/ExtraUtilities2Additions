@@ -16,7 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@Mod.EventBusSubscriber
 public class ItemUnstableAxe extends ItemAxe {
 
   public ItemUnstableAxe(ToolMaterial materialIn, float damage, float attackSpeed) {

@@ -27,35 +27,59 @@ item.eu2a:division_sign.name=分割徽章
 
 itemGroup.eu2a=更多实用设备2拓展
 
-unstabletools.early=时机尚早
-unstabletools.ontime=时机正好
-unstabletools.late=为时已晚
-unstabletools.incomplete=缺少一条或多条红石线
-unstabletools.nosky=无法看见天空
+unstabletools.early=! 时机尚早, 必须在午夜献祭
+unstabletools.ontime=- 时机正好
+unstabletools.late=! 为时已晚, 必须在午夜献祭
+unstabletools.eu2a.activation_ritual=激活仪式
+unstabletools.incomplete.false=! 祭坛缺少红石螺旋
+unstabletools.incomplete.true=- 祭坛已拥有红石螺旋
+unstabletools.nosky.false=! 无法看见天空
+unstabletools.nosky.true=- 可以看见天空
+unstabletools.dirt.false=! 祭坛没有充足的天然泥土
+unstabletools.dirt.true=- 祭坛有充足的天然泥土
+unstabletools.downIsDirt.false=! 祭坛和红石螺旋未放置在泥土上
+unstabletools.downIsDirt.true=- 祭坛和红石螺旋已放置在泥土上
 unstabletools.ready=开始献祭吧
 unstabletools.time_left=剩余时间:
 unstabletools.stable="稳定的"
 unstabletools.activated=是否激活:
 unstabletools.uses_left=剩余使用次数:
 
+unstabletools.soul_fragment.fragile=Soul of a forgotten deity
+
 death.attack.divide_by_diamond=%1$s 试图除以钻石
 death.attack.escape_divide_by_diamond=%1$s 试图逃避钻石的除法
+
+#eu2a.pseudo_inversion_sigil.tip.1=Activation Ritual
+#eu2a.pseudo_inversion_sigil.tip.2=- Altar has a redstone circle
+#eu2a.pseudo_inversion_sigil.tip.3=- Altar and Circle placed on dirt
+#eu2a.pseudo_inversion_sigil.tip.4=- Altar can see the moon
+#eu2a.pseudo_inversion_sigil.tip.5=- Altar has sufficient natural earth
+#eu2a.pseudo_inversion_sigil.tip.6=! Altar must not be lit by outside sources
 
 eu2a.pseudo_inversion_sigil.string.true=线放置成功
 eu2a.pseudo_inversion_sigil.string.false=线放置失败
 eu2a.pseudo_inversion_sigil.red_stone.true=红石线放置成功
 eu2a.pseudo_inversion_sigil.red_stone.false=红石线放置失败
-eu2a.pseudo_inversion_sigil.chest.north.true=北方箱子正确
-eu2a.pseudo_inversion_sigil.chest.north.false=北方箱子错误
-eu2a.pseudo_inversion_sigil.chest.east.true=东方箱子正确
-eu2a.pseudo_inversion_sigil.chest.east.false=东方箱子错误
-eu2a.pseudo_inversion_sigil.chest.west.true=西方箱子正确
-eu2a.pseudo_inversion_sigil.chest.west.false=西方箱子错误
-eu2a.pseudo_inversion_sigil.chest.south.true=南方箱子正确
-eu2a.pseudo_inversion_sigil.chest.south.false=南方箱子错误
-eu2a.pseudo_inversion_sigil.all.true=万事具备，开始仪式吧
-eu2a.pseudo_inversion_sigil.all.false=仪式残缺，请重新检查
+eu2a.pseudo_inversion_sigil.red_stone_string.false=§a信标周围的线缆已经成型
+eu2a.pseudo_inversion_sigil.red_stone_string.true=§4信标周围没有完整的螺旋线缆
+eu2a.pseudo_inversion_sigil.chest.north.true=北面，火之子嗣已就位
+eu2a.pseudo_inversion_sigil.chest.north.false=北面，火之子嗣：
+eu2a.pseudo_inversion_sigil.chest.north.null=未找到北方的箱子。它应该在：%s
+eu2a.pseudo_inversion_sigil.chest.east.true=东面，水之后代已就位
+eu2a.pseudo_inversion_sigil.chest.east.false=东面，水之后代：
+eu2a.pseudo_inversion_sigil.chest.east.null=未找到东方的箱子。它应该在：%s
+eu2a.pseudo_inversion_sigil.chest.west.true=西面，风之馨香已就位
+eu2a.pseudo_inversion_sigil.chest.west.false=西面，风之馨香：
+eu2a.pseudo_inversion_sigil.chest.west.null=未找到西方的箱子。它应该在：%s
+eu2a.pseudo_inversion_sigil.chest.south.true=南面，大地之赠已就位
+eu2a.pseudo_inversion_sigil.chest.south.false=南面，大地之赠：
+eu2a.pseudo_inversion_sigil.chest.south.null=未找到南方的箱子。它应该在：%s
+eu2a.pseudo_inversion_sigil.all.true=§d万事具备，开始仪式吧
+eu2a.pseudo_inversion_sigil.all.false=§4仪式残缺，请重新检查
 eu2a.pseudo_inversion_sigil.kill_mob=已击杀生物: %s
+eu2a.pseudo_inversion_sigil.kill_mob.start=§d试炼开始
+eu2a.pseudo_inversion_sigil.kill_mob.end=§9试炼结束，伪逆徽章已经稳定
 
 tile.qed.0.name=QED(量子末影设备Quantum Ender Device)
 tile.qed.1.name=QED(量子富集设备Quantum Enrichment Device)

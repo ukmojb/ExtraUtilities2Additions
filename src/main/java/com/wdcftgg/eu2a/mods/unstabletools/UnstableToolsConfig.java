@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+@Mod.EventBusSubscriber
 @Config(modid = UnstableTools.MODID)
-@Mod.EventBusSubscriber()
 public class UnstableToolsConfig {
 
 	@Config.Name("allowed container classes")

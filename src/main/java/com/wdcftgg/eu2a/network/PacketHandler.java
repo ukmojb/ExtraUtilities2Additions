@@ -21,6 +21,7 @@ public class PacketHandler {
 
     public static void init() {
         INSTANCE.registerMessage(MessageOpenInventory.class, MessageOpenInventory.class, num++, Side.SERVER);
+        INSTANCE.registerMessage(MessageRedStone.class, MessageRedStone.class, num++, Side.CLIENT);
     }
 
     static {

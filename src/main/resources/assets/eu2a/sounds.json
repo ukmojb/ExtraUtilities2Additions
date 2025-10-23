@@ -1,0 +1,12 @@
+{
+  "creepy_laugh":
+  {
+    "category": "record",
+    "sounds": [
+      {
+        "name" : "eu2a:creepy_laugh",
+        "stream" : true
+      }
+    ]
+  }
+}

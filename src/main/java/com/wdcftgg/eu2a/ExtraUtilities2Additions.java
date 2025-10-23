@@ -66,7 +66,7 @@ import static net.minecraftforge.oredict.RecipeSorter.Category.SHAPELESS;
 public class ExtraUtilities2Additions {
     public static final String MODID = "eu2a";
     public static final String NAME = "ExtraUtilities2Additions";
-    public static final String VERSION = "1.7";
+    public static final String VERSION = "2.1";
 
     public static final String CLIENT_PROXY_CLASS = "com.wdcftgg.eu2a.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "com.wdcftgg.eu2a.proxy.CommonProxy";

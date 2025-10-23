@@ -4,6 +4,8 @@ import com.wdcftgg.eu2a.ExtraUtilities2Additions;
 import com.wdcftgg.eu2a.mods.unstabletools.UnstableTools;
 import com.wdcftgg.eu2a.mods.unstabletools.crafting.IDivisionItem;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +36,8 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static net.minecraft.block.BlockRedstoneWire.POWER;
 
 
 @Mod.EventBusSubscriber
@@ -46,7 +51,9 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
     @Override
     @SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack stack) {
-        return stack.hasTagCompound() && (stack.getTagCompound().getBoolean("activated") || stack.getTagCompound().getBoolean("activated"));
+        World world = Minecraft.getMinecraft().world;
+        long time = world.getWorldInfo().getWorldTime() % 24000;
+        return (stack.hasTagCompound() && (stack.getTagCompound().getBoolean("activated"))) || (time >= 17500 && time <= 18500);
     }
 
     @Override
@@ -94,19 +101,18 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
     @Override
     @Nonnull
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (hand == EnumHand.OFF_HAND || world.isRemote)return EnumActionResult.FAIL;
+        if (hand == EnumHand.OFF_HAND || world.isRemote )return EnumActionResult.FAIL;
 
         Block block = world.getBlockState(pos).getBlock();
+
         if (block == Blocks.ENCHANTING_TABLE) {
             long time = world.getWorldInfo().getWorldTime() % 24000;
 
-            boolean correctTime = false;
-            if (time <= 17500)
-                player.sendMessage(new TextComponentTranslation("unstabletools.early"));
-            else if (time <= 18500) {
-                player.sendMessage(new TextComponentTranslation("unstabletools.ontime"));
-                correctTime = true;
-            } else player.sendMessage(new TextComponentTranslation("unstabletools.late"));
+//            for (int i = 1; i < 6; i++) {
+//                player.sendMessage(new TextComponentTranslation("eu2a.pseudo_inversion_sigil.tip." + i));
+//            }
+            player.sendMessage(new TextComponentTranslation("eu2a.activation_ritual"));
+
 
             boolean circle = true;
             for (int i = -1; i < 2; i++) {
@@ -117,13 +123,41 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
                 }
             }
 
-            if (!circle)
-                player.sendMessage(new TextComponentTranslation("unstabletools.incomplete"));
+            boolean downIsDirt = true;
+            for (int i = -1; i < 2; i++) {
+                for (int j = -1; j < 2; j++) {
+                    if (i == 0 && j == 0) continue;
+                    BlockPos pos1 = new BlockPos(pos.getX() + i, pos.getY(), pos.getZ() + j);
+                    if(world.getBlockState(pos1.down()).getBlock() != Blocks.DIRT && world.getBlockState(pos1.down()).getBlock() != Blocks.GRASS) downIsDirt = false;
+                }
+            }
+
+            boolean dirt = true;
+            for (int i = -2; i < 3; i++) {
+                for (int j = -2; j < 3; j++) {
+                    if (i == 0 && j == 0) continue;
+                    BlockPos pos1 = new BlockPos(pos.down(2).getX() + i, pos.down(2).getY(), pos.down(2).getZ() + j);
+                    if(world.getBlockState(pos1).getBlock() != Blocks.DIRT && world.getBlockState(pos1).getBlock() != Blocks.GRASS) dirt = false;
+                }
+            }
+
+//            if (!circle)
+            player.sendMessage(new TextComponentTranslation("unstabletools.dirt." + dirt));
+            player.sendMessage(new TextComponentTranslation("unstabletools.downIsDirt." + downIsDirt));
+            player.sendMessage(new TextComponentTranslation("unstabletools.incomplete." + circle));
 
             boolean skyVisible = world.canSeeSky(pos.up());
 
-            if (!skyVisible)
-                player.sendMessage(new TextComponentTranslation("unstabletools.nosky"));
+//            if (!skyVisible)
+            player.sendMessage(new TextComponentTranslation("unstabletools.nosky." + skyVisible));
+
+            boolean correctTime = false;
+            if (time <= 17500)
+                player.sendMessage(new TextComponentTranslation("unstabletools.early"));
+            else if (time <= 18500) {
+                player.sendMessage(new TextComponentTranslation("unstabletools.ontime"));
+                correctTime = true;
+            } else player.sendMessage(new TextComponentTranslation("unstabletools.late"));
 
             if (correctTime && circle && skyVisible) player.sendMessage(new TextComponentTranslation("unstabletools.ready"));
 
@@ -163,6 +197,11 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
 
     public static boolean checkPseudoInversionSigil(BlockPos pos, World world, EntityPlayer player, boolean hasTip) {
 
+        player.sendMessage(new TextComponentTranslation(
+                ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.red_stone_string."
+                        + (!checkRedStone(pos, world, player, hasTip) ||
+                            !checkString(pos, world, player, hasTip))));
+
         return checkChest(pos, world, player, hasTip) &&
                             checkRedStone(pos, world, player, hasTip) &&
                                 checkString(pos, world, player, hasTip);
@@ -190,6 +229,7 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
         boolean hasNorthAllItem = true;
         if (northblock.equals(Blocks.CHEST)) {
             TileEntityChest tileEntityChest = (TileEntityChest) world.getTileEntity(northPos);
+            int num = 0;
             if (tileEntityChest != null && !tileEntityChest.getItems().isEmpty()) {
                 int listNoAir = (int) tileEntityChest.getItems().stream().filter(c -> !c.isEmpty()).count();
                 for (ItemStack itemStack : northItems) {
@@ -197,14 +237,26 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
 
                     if (!listHasItemStack(tileEntityChest.getItems(), itemStack)) {
                         hasNorthAllItem = false;
+                    } else {
+                        num += 1;
                     }
 
                 }
                 if (listNoAir > 12) hasNorthAllItem = false;
             }
+
+            if (hasTip) {
+                if (hasNorthAllItem) {
+                    player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.north." + hasNorthAllItem));
+                } else {
+                    player.sendMessage(new TextComponentString(I18n.format(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.north." + hasNorthAllItem) + num + "/12"));
+                }
+            }
+        } else {
+            hasNorthAllItem = false;
+            player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.north.null", (northPos.getX() + " " + northPos.getY() + " " + northPos.getZ())));
         }
 
-        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.north." + hasNorthAllItem));
 
         //east
         List<String> potionList = new ArrayList<>();
@@ -213,6 +265,7 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
         boolean hasEastAllItem = true;
         if (eastblock.equals(Blocks.CHEST)) {
             TileEntityChest tileEntityChest = (TileEntityChest) world.getTileEntity(eastPos);
+            int num = 0;
             if (tileEntityChest != null && !tileEntityChest.getItems().isEmpty()) {
                 int listNoAir = (int) tileEntityChest.getItems().stream().filter(c -> !c.isEmpty()).count();
                 for (ItemStack itemStack : tileEntityChest.getItems()) {
@@ -230,12 +283,23 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
                 List<String> newList = potionList.stream()
                         .distinct()
                         .collect(Collectors.toList());
-
+                num = newList.size();
                 if (newList.size() < 12 || listNoAir != 12) hasEastAllItem = false;
             }
+
+            if (hasTip) {
+                if (hasEastAllItem) {
+                    player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.east." + hasEastAllItem));
+                } else {
+                    player.sendMessage(new TextComponentString(I18n.format(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.east." + hasEastAllItem) + num + "/12"));
+                }
+            }
+        } else {
+            hasEastAllItem = false;
+            player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.east.null", (eastPos.getX() + " " + eastPos.getY() + " " + eastPos.getZ())));
         }
 
-        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.east." + hasEastAllItem));
+
 
         //west
         ItemStack[] westItems = new ItemStack[] {
@@ -257,6 +321,7 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
         boolean hasWestAllItem = true;
         if (westblock.equals(Blocks.CHEST)) {
             TileEntityChest tileEntityChest = (TileEntityChest) world.getTileEntity(westPos);
+            int num = 0;
             if (tileEntityChest != null && !tileEntityChest.getItems().isEmpty()) {
                 int listNoAir = (int) tileEntityChest.getItems().stream().filter(c -> !c.isEmpty()).count();
                 for (ItemStack itemStack : westItems) {
@@ -264,14 +329,27 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
 
                     if (!listHasItemStack(tileEntityChest.getItems(), itemStack)) {
                         hasWestAllItem = false;
+                    } else {
+                        num += 1;
                     }
 
                 }
                 if (listNoAir > 12) hasWestAllItem = false;
             }
+            if (hasTip) {
+                if (hasWestAllItem) {
+                    player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.west." + hasWestAllItem));
+                } else {
+                    player.sendMessage(new TextComponentString(I18n.format(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.west." + hasWestAllItem) + num + "/12"));
+                }
+            }
+        } else {
+            hasWestAllItem = false;
+            player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.west.null", (westPos.getX() + " " + westPos.getY() + " " + westPos.getZ())));
         }
 
-        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.west." + hasWestAllItem));
+
+//        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.west." + hasWestAllItem));
 
 
         //south
@@ -294,6 +372,7 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
         boolean hasSouthAllItem = true;
         if (southblock.equals(Blocks.CHEST)) {
             TileEntityChest tileEntityChest = (TileEntityChest) world.getTileEntity(southPos);
+            int num = 0;
             if (tileEntityChest != null && !tileEntityChest.getItems().isEmpty()) {
                 int listNoAir = (int) tileEntityChest.getItems().stream().filter(c -> !c.isEmpty()).count();
                 for (ItemStack itemStack : southItems) {
@@ -301,19 +380,32 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
 
                     if (!listHasItemStack(tileEntityChest.getItems(), itemStack)) {
                         hasSouthAllItem = false;
+                    } else {
+                        num += 1;
                     }
 
                 }
                 if (listNoAir > 12) hasSouthAllItem = false;
             }
+
+            if (hasTip) {
+                if (hasSouthAllItem) {
+                    player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.south." + hasSouthAllItem));
+                } else {
+                    player.sendMessage(new TextComponentString(I18n.format(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.south." + hasSouthAllItem) + num + "/12"));
+                }
+            }
+        } else {
+            hasSouthAllItem = false;
+            player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.south.null", (southPos.getX() + " " + southPos.getY() + " " + southPos.getZ())));
         }
 
-        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.south." + hasSouthAllItem));
+//        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.chest.south." + hasSouthAllItem));
 
 
 
 
-        return true;
+        return hasNorthAllItem && hasEastAllItem && hasSouthAllItem && hasSouthAllItem;
     }
 
     private static boolean checkRedStone(BlockPos pos, World world, EntityPlayer player, boolean hasTip) {
@@ -367,7 +459,7 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
             if (!block.equals(Blocks.REDSTONE_WIRE)) allRedStone = false;
         }
 
-        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.red_stone." + allRedStone));
+//        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.red_stone." + allRedStone));
 
         return allRedStone;
     }
@@ -422,7 +514,7 @@ public class ItemDivisionSign extends Item implements IDivisionItem, IItemColore
             if (!block.equals(Blocks.TRIPWIRE)) allString = false;
         }
 
-        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.string." + allString));
+//        if (hasTip) player.sendMessage(new TextComponentTranslation(ExtraUtilities2Additions.MODID + ".pseudo_inversion_sigil.string." + allString));
 
         return allString;
     }

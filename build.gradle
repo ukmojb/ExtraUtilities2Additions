@@ -112,7 +112,7 @@ dependencies {
 
 //    implementation rfg.deobf('curse.maven:UnstableTools-322355:4293939')
     implementation rfg.deobf('curse.maven:ExtraUtilities-225561:2678374')
-    implementation rfg.deobf('curse.maven:LibNine-322344:3509087')
+    implementation rfg.deobf('curse.maven:LibNie-322344:3509087')
 
 
     compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"

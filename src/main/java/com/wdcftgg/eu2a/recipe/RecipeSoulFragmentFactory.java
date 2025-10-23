@@ -128,7 +128,11 @@ public class RecipeSoulFragmentFactory implements IRecipeFactory {
             }
 
             if (!isGoodForCrafting(inv) || !ClientEvent.oponIn) {
-                return ItemStack.EMPTY;
+                ItemStack itemStack = new ItemStack(ModItems.soulFragment);
+                NBTTagCompound nbt = new NBTTagCompound();
+                nbt.setBoolean("fragile", true);
+                itemStack.setTagCompound(nbt);
+                return itemStack;
             }
 
 
@@ -152,17 +156,17 @@ public class RecipeSoulFragmentFactory implements IRecipeFactory {
 
             NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
-            for (int i = 0; i < nonnulllist.size(); ++i)
-            {
-                ItemStack itemstack = inv.getStackInSlot(i);
-                if (itemstack.getItem().equals(ObjectHolders.unstableSword))
-                {
-                    ItemStack itemstack1 = itemstack.copy();
-                    itemstack1.setCount(1);
-                    nonnulllist.set(i, itemstack1);
-                    break;
-                }
-            }
+//            for (int i = 0; i < nonnulllist.size(); ++i)
+//            {
+//                ItemStack itemstack = inv.getStackInSlot(i);
+//                if (itemstack.getItem().equals(ObjectHolders.unstableSword))
+//                {
+//                    ItemStack itemstack1 = itemstack.copy();
+//                    itemstack1.setCount(1);
+//                    nonnulllist.set(i, itemstack1);
+//                    break;
+//                }
+//            }
 
             return nonnulllist;
         }
@@ -216,9 +220,9 @@ public class RecipeSoulFragmentFactory implements IRecipeFactory {
             if (foundPlayer.getMaxHealth() > 6) {
                 return true;
             }
-            if (!foundPlayer.world.isRemote && ClientEvent.oponIn) {
-                foundPlayer.sendMessage(new TextComponentTranslation("eu2a.soul_fragment.message"));
-            }
+//            if (!foundPlayer.world.isRemote && ClientEvent.oponIn) {
+//                foundPlayer.sendMessage(new TextComponentTranslation("eu2a.soul_fragment.message"));
+//            }
             return false;
         }
 

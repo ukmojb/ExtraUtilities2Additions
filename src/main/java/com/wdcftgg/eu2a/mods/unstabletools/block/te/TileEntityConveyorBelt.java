@@ -1,6 +1,7 @@
 package com.wdcftgg.eu2a.mods.unstabletools.block.te;
 
 import net.minecraft.block.BlockDirectional;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -15,9 +16,9 @@ public class TileEntityConveyorBelt extends TileEntity implements ITickable {
         if (world.isRemote || world.getTotalWorldTime() % 2 != 0) return;
 
         EnumFacing facing = world.getBlockState(pos).getValue(BlockDirectional.FACING).getOpposite();
-        AxisAlignedBB area = new AxisAlignedBB(pos).grow(0.5, 0.1, 0.5).offset(0, 1, 0);
+        AxisAlignedBB area = new AxisAlignedBB(pos).offset(0, 1, 0);
 
-        for (EntityLiving entity : world.getEntitiesWithinAABB(EntityLiving.class, area)) {
+        for (Entity entity : world.getEntitiesWithinAABB(Entity.class, area)) {
             // 计算推动向量
             double motionX = facing.getXOffset() * MOVE_SPEED;
             double motionZ = facing.getZOffset() * MOVE_SPEED;
